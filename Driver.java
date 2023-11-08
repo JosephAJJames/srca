@@ -10,15 +10,9 @@ public class Driver implements CollectionTest {
 
     private int size;
 
-    public Driver()
-    {
+    public Driver() {
     }
 
-    //public static void main(String[] args)
-    //{
-    //    Driver code = new Driver();
-    //    code.runTest(CollectionType.LINKED_LIST, TestType.ADD, 5);
-    //}
 
     public void setSize(int size) {
         this.size = size;
@@ -29,7 +23,6 @@ public class Driver implements CollectionTest {
 
     public void runTest(CollectionType type, TestType test, int iterations) {
         boolean Add = false, Index = false, Search = false;
-
 
 
         switch (test) {
@@ -63,7 +56,6 @@ public class Driver implements CollectionTest {
 
         if (Ll && Add) {
 
-
             for (int x = 0; x < iterations; x++) {
                 for (int i = 0; i < size; i++) {
                     Person person = new Person("Bob", 21);
@@ -71,20 +63,20 @@ public class Driver implements CollectionTest {
                 }
                 linkedList = new LinkedList<Person>(arrayList);
             }
-            
 
         } else if (Ll && Index) {
 
-
             for (int x = 0; x < iterations; x++) {
-                int targetIndex = size / 2; 
-    
-                Person person = linkedList.get(targetIndex);
+                try {
+                    int targetIndex = size / 2;
+                    Person person = linkedList.get(targetIndex);
+                } catch (Exception ignored) {
+                }
             }
             linkedList = new LinkedList<Person>(arrayList);
 
-
         } else if (Ll && Search) {
+
             for (int y = 0; y < size; y++) {
                 Person fella = new Person(Integer.toString(y), 10);
                 linkedList.add(fella);
@@ -93,13 +85,16 @@ public class Driver implements CollectionTest {
             int index = 0;
             try {
                 index = size / 2;
-            } catch (Exception e) {
-
+            } catch (Exception ignored) {
             }
-            for (int x = 0; x < iterations; x++) {
-                
+            Person person = new Person(Integer.toString(index), 10);
+            for (int i = 0; i <= iterations; i++) {
+                for (int x = 0; x < size; x++) {
+                    if (linkedList.get(x).equals(person)) {
+                        break;
+                    }
+                }
             }
-
         }
 
         if (Al && Add) {
@@ -112,26 +107,35 @@ public class Driver implements CollectionTest {
             }
         } else if (Al && Index) {
 
-
-            for (int i = 0; i < size; i++) {
-                Person person = new Person("Bob", 21);
-                arrayList.add(person);
-            }
-            int min = 0;
-            int max = size;
-
-            Random random = new Random();
             for (int x = 0; x < iterations; x++) {
-                int i = random.nextInt(max - min + 1) + min;
-                Person person = (Person) arrayList.get(i);
+                try {
+                    int targetIndex = size / 2;
+                    Person person = arrayList.get(targetIndex);
+                } catch (Exception ignored) {
+                }
             }
-
-            
+            arrayList = new ArrayList<>(size);
 
         } else if (Al && Search) {
 
+            for (int y = 0; y < size; y++) {
+                Person fella = new Person(Integer.toString(y), 10);
+                arrayList.add(fella);
+            }
 
-
+            int index = 0;
+            try {
+                index = size / 2;
+            } catch (Exception ignored) {
+            }
+            Person person = new Person(Integer.toString(index), 10);
+            for (int i = 0; i <= iterations; i++) {
+                for (int x = 0; x < size; x++) {
+                    if (arrayList.get(x).equals(person)) {
+                        break;
+                    }
+                }
+            }
         }
 
         if (Hm && Add) {
@@ -145,17 +149,34 @@ public class Driver implements CollectionTest {
 
         } else if (Hm && Index) {
 
-
-
-
-
+            for (int x = 0; x < iterations; x++) {
+                try {
+                    int targetIndex = size / 2;
+                    Person person = arrayList.get(targetIndex);
+                } catch (Exception ignored) {
+                }
+            }
+            arrayList = new ArrayList<>(size);
 
         } else if (Hm && Search) {
+            for (int y = 0; y < size; y++) {
+                Person fella = new Person(Integer.toString(y), 10);
+                hashTable.put(size, fella);
+            }
 
-
-
-
-
+            int index = 0;
+            try {
+                index = size / 2;
+            } catch (Exception ignored) {
+            }
+            Person person = new Person(Integer.toString(index), 10);
+            for (int i = 0; i <= iterations; i++) {
+                for (int x = 0; x < size; x++) {
+                    if (hashTable.get(x).equals(person)) {
+                        break;
+                    }
+                }
+            }
         }
     }
 }
