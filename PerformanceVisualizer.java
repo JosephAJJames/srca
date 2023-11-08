@@ -179,17 +179,17 @@ public class PerformanceVisualizer
 
     public static void main(String[] args)
     {
-        //if (args.length != 5)
-        //    usage();
+        if (args.length != 5)
+            usage();
 
         try 
         {
-            String className = "Driver"; //args[0];
+            String className = args[0];
             System.out.println(className);
-            int minimum = 3; //Integer.parseInt(args[1]);
-            int maximum = 10; //Integer.parseInt(args[2]);
-            int numberOfTests = 10;//= Integer.parseInt(args[3]);
-            int iterations = 5;//Integer.parseInt(args[4]);
+            int minimum = Integer.parseInt(args[1]);
+            int maximum = Integer.parseInt(args[2]);
+            int numberOfTests = Integer.parseInt(args[3]);
+            int iterations = Integer.parseInt(args[4]);
             new PerformanceVisualizer(className, minimum, maximum, numberOfTests, iterations);
 
         } catch (Exception e)
