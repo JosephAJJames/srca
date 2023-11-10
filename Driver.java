@@ -2,6 +2,10 @@
 import java.util.*;
 
 public class Driver implements CollectionTest {
+    /**
+     * @author Joseph James
+     * Driver class
+     */
     private HashMap<Integer, Person> hashTable = new HashMap<Integer, Person>();
 
     private LinkedList<Person> linkedList = new LinkedList<Person>();
@@ -10,10 +14,14 @@ public class Driver implements CollectionTest {
 
     private int size;
 
+
     public Driver() {
     }
 
 
+    /**
+     * @param size the number of unique items to add to each collection.
+     */
     public void setSize(int size) {
         this.size = size;
         hashTable = new HashMap<Integer, Person>(size);
@@ -21,9 +29,18 @@ public class Driver implements CollectionTest {
         linkedList = new LinkedList<Person>(arrayList);
     }
 
+    /**
+     * @param type enum of the type of collection to be tested.
+     * @param test enum of the type of test to be undertaken.
+     * @param iterations the number of times to repeat the given test before returning.
+     */
+
     public void runTest(CollectionType type, TestType test, int iterations) {
         boolean Add = false, Index = false, Search = false;
 
+        /**
+         * used to decide what collection and test is being performed
+         */
 
         switch (test) {
             case ADD:
@@ -53,6 +70,9 @@ public class Driver implements CollectionTest {
                 Hm = true;
                 break;
         }
+        /**
+         * LinkedList and ADD
+         */
 
         if (Ll && Add) {
 
@@ -63,7 +83,9 @@ public class Driver implements CollectionTest {
                 }
                 linkedList = new LinkedList<Person>(arrayList);
             }
-
+            /**
+             * LinkedList and INDEX
+             * */
         } else if (Ll && Index) {
 
             for (int x = 0; x < iterations; x++) {
@@ -75,6 +97,9 @@ public class Driver implements CollectionTest {
             }
             linkedList = new LinkedList<Person>(arrayList);
 
+            /**
+             * LinkedList and SEARCH
+             */
         } else if (Ll && Search) {
 
             for (int y = 0; y < size; y++) {
@@ -97,6 +122,9 @@ public class Driver implements CollectionTest {
             }
         }
 
+        /**
+         * ArrayList and ADD
+         */
         if (Al && Add) {
             for (int x = 0; x < iterations; x++) {
                 for (int i = 0; i < size; i++) {
@@ -105,6 +133,10 @@ public class Driver implements CollectionTest {
                 }
                 arrayList = new ArrayList<Person>(size);
             }
+
+            /**
+             * ArrayList and INDEX
+              */
         } else if (Al && Index) {
 
             for (int x = 0; x < iterations; x++) {
@@ -116,6 +148,9 @@ public class Driver implements CollectionTest {
             }
             arrayList = new ArrayList<>(size);
 
+            /**
+             * ArrayList and SEARCH
+             */
         } else if (Al && Search) {
 
             for (int y = 0; y < size; y++) {
@@ -138,6 +173,9 @@ public class Driver implements CollectionTest {
             }
         }
 
+        /**
+         * HashMap and ADD
+         */
         if (Hm && Add) {
 
             for (int x = 0; x < iterations; x++) {
@@ -147,6 +185,9 @@ public class Driver implements CollectionTest {
                 }
             }
 
+            /**
+             * HashMap and INDEX
+             */
         } else if (Hm && Index) {
 
             for (int x = 0; x < iterations; x++) {
@@ -158,6 +199,9 @@ public class Driver implements CollectionTest {
             }
             arrayList = new ArrayList<>(size);
 
+            /**
+             * HashMap and SEARCH
+             */
         } else if (Hm && Search) {
             for (int y = 0; y < size; y++) {
                 Person fella = new Person(Integer.toString(y), 10);
